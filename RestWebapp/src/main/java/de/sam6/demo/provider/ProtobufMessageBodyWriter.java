@@ -25,11 +25,11 @@ import java.util.WeakHashMap;
 @Provider
 @Produces("application/x-protobuf")
 public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
+    private Map<Object, byte[]> buffer = new WeakHashMap<Object, byte[]>();
+
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return Message.class.isAssignableFrom(type);
     }
-
-    private Map<Object, byte[]> buffer = new WeakHashMap<Object, byte[]>();
 
     public long getSize(Message m, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

@@ -1,7 +1,8 @@
 # RestfulProtobuf
 This is a Prototype for a standalone WAR. It offers a Restful service using Jersey/JAX-RS (JSR 311) and Google Protocol Buffers (protobuf).
+
 My project is a feasibility study and is **NOT PRODUCTION READY**.
-It was initially built using `Maven 3.0.4` and `Oracle JDK 1.8.0_45`.
+It was initially built using `Maven 3.0.4`, `Prototoc 2.6.1` and `Oracle JDK 1.8.0_45`.
 
 # Quickstart
 To enjoy the simplicity, you only have to execute three steps:
@@ -12,7 +13,8 @@ To enjoy the simplicity, you only have to execute three steps:
 
 Now the service is up and running using port `8080`. Simply connect via browser, for example by using [http://localhost:8080/rest/hello/Simon](http://localhost:8080/rest/hello/Simon)
 
-Jersey automatically generates a `WADL` file which describes all valid operations: [http://localhost:8080/rest/application.wadl](http://localhost:8080/rest/application.wadl)
+Jersey automatically generates a `WADL` file which describes all valid operations: [http://localhost:8080/rest/application.wadl](http://localhost:8080/rest/application.wadl).
+This is simplified WADL with user and core resources only. To get full WADL with extended resources use the query parameter detail: [http://localhost:8080/rest/application.wadl?detail=true](http://localhost:8080/rest/application.wadl?detail=true)
 
 # Build from scratch
 ## Preparation

@@ -1,4 +1,5 @@
 option java_package = "de.sam6.demo.protobuf";
+
 option java_outer_classname = "AddressBookProtos";
 
 message Person {

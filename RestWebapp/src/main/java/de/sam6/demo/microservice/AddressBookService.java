@@ -1,24 +1,8 @@
 package de.sam6.demo.microservice;
 
-import com.google.protobuf.GeneratedMessage;
-import com.google.protobuf.Message;
 import de.sam6.demo.protobuf.AddressBookProtos;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.MessageBodyWriter;
-import javax.ws.rs.ext.Provider;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * Created with IntelliJ IDEA.
