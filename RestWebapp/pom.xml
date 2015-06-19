@@ -14,21 +14,46 @@
     <name>RestWebapp Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!-- APPLICATION REQUIREMENTS -->
+
+        <!-- JAX-RX implementation, used for Restful service -->
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>1.8</version>
+            <version>1.19</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>1.19</version>
+        </dependency>
+        <!-- Protobuf library supports extremly fast (de-)serialisation,
+             used as intercbange format by Restful service -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.0.0-alpha-3</version>
+        </dependency>
+
+        <!-- STANDALONE REQUIREMENTS -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
             <version>9.3.0.v20150612</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- TEST REQUIREMENTS -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -70,6 +95,23 @@
                                     </fileset>
                                 </move>
                             </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir='target/generated-sources'/>
+                                <exec executable='protoc'>
+                                    <arg value='--java_out=target/generated-sources'/>
+                                    <arg value='src/main/resources/addressbook.proto'/>
+                                </exec>
+                            </tasks>
+                            <sourceRoot>target/generated-sources</sourceRoot>
                         </configuration>
                         <goals>
                             <goal>run</goal>

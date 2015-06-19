@@ -10,7 +10,7 @@ To enjoy the simplicity, you only have to execute three steps:
 2. Build Project using Maven `cd ./RestfulProtobuf/ && mvn clean install`
 3. Start embedded Jetty `cd ./RestWebapp/target/ && java -jar RestWebapp-1.0-SNAPSHOT.war`
 
-Now the service is up and running using port 8080. Simply connect via browser, for example by using http://localhost:8080/rest/hello/Simon
+Now the service is up and running using port `8080`. Simply connect via browser, for example by using [http://localhost:8080/rest/hello/Simon](http://localhost:8080/rest/hello/Simon)
 
 # Build from scratch
 ## Preparation
