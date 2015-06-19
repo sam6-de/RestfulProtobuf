@@ -12,13 +12,29 @@ To enjoy the simplicity, you only have to execute three steps:
 Now the service is up and running using port 8080. Simply connect via browser, for example by using http://localhost:8080/rest/hello/Simon
 
 # Build from scratch
-```mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DarchetypeVersion=RELEASE -DgroupId=de.sam6.demo -DartifactId=RestfulProtobuf -DinteractiveMode=false```
+## Preparation
+If you want to set up your Maven project as multi module project, you should first create a root ```pom.xml```-file.
+```mvn archetype:generate \
+   -DarchetypeGroupId=org.codehaus.mojo.archetypes \
+   -DarchetypeArtifactId=pom-root \
+   -DarchetypeVersion=RELEASE \
+   -DgroupId=de.sam6.demo \
+   -DartifactId=RestfulProtobuf \
+   -DinteractiveMode=false```
+In order to create a new/first submodule in the project, change the directory and use the Maven webapp archetype, that will create (most of) necessary folders and files:
 ```cd RestfulProtobuf/```
-```mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp -DgroupId=de.sam6.demo -DartifactId=RestWebapp -DinteractiveMode=false```
-```cd RestWebapp/```
+```mvn archetype:generate \
+   -DarchetypeArtifactId=maven-archetype-webapp \
+   -DgroupId=de.sam6.demo \
+   -DartifactId=RestWebapp \
+   -DinteractiveMode=false```
+Because the java-subfolder is not created automatically, we have to do this manually:
+```mkdir RestWebapp/src/main/java```
 
-```
-<dependency>
+Now you can import the whole multi-module-project into your favourite IDE.
+
+## Dependencies
+```<dependency>
 	<groupId>com.sun.jersey</groupId>
 	<artifactId>jersey-server</artifactId>
 	<version>1.19</version>
