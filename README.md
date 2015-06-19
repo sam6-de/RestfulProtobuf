@@ -11,6 +11,7 @@ To enjoy the simplicity, you only have to execute three steps:
 3. Start embedded Jetty `cd ./RestWebapp/target/ && java -jar RestWebapp-1.0-SNAPSHOT.war`
 
 Now the service is up and running using port `8080`. Simply connect via browser, for example by using [http://localhost:8080/rest/hello/Simon](http://localhost:8080/rest/hello/Simon)
+Jersey automatically generates a `WADL` file which describes all valid operations: [http://localhost:8080/rest/application.wadl](http://localhost:8080/rest/application.wadl)
 
 # Build from scratch
 ## Preparation
