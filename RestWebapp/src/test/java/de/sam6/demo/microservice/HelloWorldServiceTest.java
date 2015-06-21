@@ -4,6 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.ws.rs.core.Response;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Sascha
@@ -12,18 +16,23 @@ import org.junit.Test;
  */
 public class HelloWorldServiceTest {
 
+    HelloWorldService testService;
+
     @Before
     public void setUp() throws Exception {
-        return;
+         testService = new HelloWorldService();
     }
 
     @After
     public void tearDown() throws Exception {
-        return;
+        testService = null;
     }
 
     @Test
     public void testGetName() throws Exception {
-        return;
+        Response expected = Response.status(200).entity("Hello, UnitTest!").build();
+        Response actual = testService.getName("UnitTest");
+        assertEquals("Service did not say hello to me.", expected.getEntity(), actual.getEntity());
+        assertEquals("HTTP response code did not match.", expected.getStatus(), actual.getStatus());
     }
 }

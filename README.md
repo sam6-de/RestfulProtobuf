@@ -2,7 +2,11 @@
 This is a Prototype for a standalone WAR. It offers a Restful service using Jersey/JAX-RS (JSR 311) and Google Protocol Buffers (protobuf).
 
 My project is a feasibility study and is **NOT PRODUCTION READY**.
-It was initially built using `Maven 3.0.4`, `Prototoc 2.6.1` and `Oracle JDK 1.8.0_45`.
+
+# Prerequisites
+- [`Maven 3.3.3`](http://maven.apache.org/)
+- [`Protoc 3.0.0-alpha-3`](https://github.com/google/protobuf/releases)
+- [`Oracle JDK 1.8.0_45`](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 # Quickstart
 To enjoy the simplicity, you only have to execute three steps:
@@ -11,7 +15,7 @@ To enjoy the simplicity, you only have to execute three steps:
 2. Build Project using Maven `cd ./RestfulProtobuf/ && mvn clean install`
 3. Start embedded Jetty `cd ./RestWebapp/target/ && java -jar RestWebapp-1.0-SNAPSHOT.war`
 
-Now the service is up and running using port `8080`. Simply connect via browser, for example by using [http://localhost:8080/rest/hello/Simon](http://localhost:8080/rest/hello/Simon)
+Now the service is up and running using port `8080`. Simply connect via browser, for example by using [http://localhost:8080/rest/hello/world](http://localhost:8080/rest/hello/world)
 
 Jersey automatically generates a `WADL` file which describes all valid operations: [http://localhost:8080/rest/application.wadl](http://localhost:8080/rest/application.wadl).
 This is simplified WADL with user and core resources only. To get full WADL with extended resources use the query parameter detail: [http://localhost:8080/rest/application.wadl?detail=true](http://localhost:8080/rest/application.wadl?detail=true)
