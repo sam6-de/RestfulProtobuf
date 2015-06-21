@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>RestfulProtobuf by sam6-de</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>RestfulProtobuf</h1>
+        <h2>High performant REST service</h2>
+        <a href="https://github.com/sam6-de/RestfulProtobuf" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="restfulprotobuf" class="anchor" href="#restfulprotobuf" aria-hidden="true"><span class="octicon octicon-link"></span></a>RestfulProtobuf</h1>
+
+<p>This is a Prototype for a standalone WAR. It offers a Restful service using Jersey/JAX-RS (JSR 311) and Google Protocol Buffers (protobuf).</p>
+
+<p>My project is a feasibility study and is <strong>NOT PRODUCTION READY</strong>.</p>
+
+<h1>
+<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h1>
+
+<ul>
+<li><a href="http://maven.apache.org/"><code>Maven 3.3.3</code></a></li>
+<li><a href="https://github.com/google/protobuf/releases"><code>Protoc 3.0.0-alpha-3</code></a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"><code>Oracle JDK 1.8.0_45</code></a></li>
+</ul>
+
+<h1>
+<a id="quickstart" class="anchor" href="#quickstart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quickstart</h1>
+
+<p>To enjoy the simplicity, you only have to execute three steps:</p>
+
+<ol>
+<li>Clone Project from GitHub <code>git clone https://github.com/sam6-de/RestfulProtobuf.git</code>
+</li>
+<li>Build Project using Maven <code>cd ./RestfulProtobuf/ &amp;&amp; mvn clean install</code>
+</li>
+<li>Start embedded Jetty <code>cd ./RestWebapp/target/ &amp;&amp; java -jar RestWebapp-1.0-SNAPSHOT.war</code>
+</li>
+</ol>
+
+<p>Now the service is up and running using port <code>8080</code>. Simply connect via browser, for example by using <a href="http://localhost:8080/rest/hello/world">http://localhost:8080/rest/hello/world</a></p>
+
+<p>Jersey automatically generates a <code>WADL</code> file which describes all valid operations: <a href="http://localhost:8080/rest/application.wadl">http://localhost:8080/rest/application.wadl</a>.
+This is simplified WADL with user and core resources only. To get full WADL with extended resources use the query parameter detail: <a href="http://localhost:8080/rest/application.wadl?detail=true">http://localhost:8080/rest/application.wadl?detail=true</a></p>
+
+<h1>
+<a id="build-from-scratch" class="anchor" href="#build-from-scratch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build from scratch</h1>
+
+<h2>
+<a id="preparation" class="anchor" href="#preparation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparation</h2>
+
+<p>If you want to set up your Maven project as multi module project, you should first create a root <code>pom.xml</code>-file.</p>
+
+<pre><code>mvn archetype:generate \
+    -DarchetypeGroupId=org.codehaus.mojo.archetypes \
+    -DarchetypeArtifactId=pom-root \
+    -DarchetypeVersion=RELEASE \
+    -DgroupId=de.sam6.demo \
+    -DartifactId=RestfulProtobuf \
+    -DinteractiveMode=false
+</code></pre>
+
+<p>In order to create a new/first submodule in the project, change the directory and use the Maven webapp archetype, that will create (most of) necessary folders and files:</p>
+
+<pre><code>cd RestfulProtobuf/
+mvn archetype:generate \
+    -DarchetypeArtifactId=maven-archetype-webapp \
+    -DgroupId=de.sam6.demo \
+    -DartifactId=RestWebapp \
+    -DinteractiveMode=false
+</code></pre>
+
+<p>Because the <code>java</code> source folder is not created automatically, we have to do this manually:</p>
+
+<pre><code>mkdir RestWebapp/src/main/java
+</code></pre>
+
+<p>Now you can import the whole multi-module-project into your favourite IDE.</p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
+    &lt;version&gt;1.19&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/sam6-de/RestfulProtobuf/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/sam6-de/RestfulProtobuf/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/sam6-de/RestfulProtobuf"></a> is maintained by <a href="https://github.com/sam6-de">sam6-de</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
